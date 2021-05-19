@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.body_center{
+    height: 100vh;
+    width: 100%;
+    background-image: url(/sky.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow-x: hidden;
+}
+.highway{
+    height: 200px;
+    width: 500%;
+    display: block;
+    background-image: url(/road.png);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: highway 5s linear infinite;
+}
+@keyframes highway{
+    100%{
+        transform: translateX(-3400px);
+    }
+}
+.city{
+    height: 400px;
+    width: 500%;
+    background-image: url(/city.png);
+    position: absolute;
+    bottom: 200px;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: city 20s linear infinite;
+}
+@keyframes city{
+    100%{
+        transform: translateX(-1400px);
+    }
+}
+.car{
+    width: 400px;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: 2;
+}
+.car img{
+    width: 100%;
+    animation: car 1s linear infinite;
+}
+@keyframes car{
+    100%{
+        transform: translateY(-1px)
+    }
+    50%{
+        transform: translateY(1px)
+    }
+    0%{
+        transform: translateY(-1px)
+    }
+     
+}
+.wheel{
+    left: 50%;
+    bottom: 178px;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: 2;
+}
+.wheel img{
+    height: 78px;
+    width: 78px;
+    animation: wheel 1s linear infinite;
+
+}
+@keyframes wheel{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.back-wheel{
+    left: -165px;
+    position: absolute;
+}
+.front-wheel{
+    left: 80px;
+    position: absolute;
+}
+.all{
+    padding: 30px;
+}
+    
+h1
+{
+    font-family:'Courier New', Courier, monospace;
+    margin-bottom: 25px;
+
+
+}
+.RegTextHolder{
+    font-size: large;
+}
+.reg input{
+    width: 500px;
+    border-radius: 6px;
+    padding: 20px 30px;
+    margin: 15px 0;
+    margin-bottom: 2%;
+    background-color: cyan;
+    color: black;
+}
+.regBtn{
+    width: 50x;
+    border-radius: 6px;
+    padding: 22px 30px;
+    margin: 15px 0;
+    margin-bottom: 3%;
+    background-color: cyan;
+    color:black;
+    font-size: 16px;
+}
+.regBtn:hover{
+    background: white;
+}
+.container input[type="radio"] {
+    margin-bottom: 50px;
+  }
+.reggText{
+    font-size: x-large;
+}
+.container1 .displayButton, .resetButton{
+  background-color:cyan;
+  border-radius: 7px;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.container1 .displayButton:hover, .resetButton:hover
+{
+    background: white;
+}
+.container1 button{
+    font-size: 800;
+    color: red;
+}
+a{
+  width: 30%;
+  padding: 5px 10px;
+  margin: 15px 0;
+  margin-bottom: 2%;
+  color: black;
+
+}
+h3{
+    padding-top: 8px;
+}

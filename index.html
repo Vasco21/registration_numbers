@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html regg="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registration_number.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="body_center">
+        <div class="highway"></div>
+        <div class="city"></div>
+
+        <div class="car">
+            <img src="car.png" alt="car">
+        </div>
+        <div class="wheel">
+            <img src="wheel.png" class="back-wheel" alt="">
+            <img src="wheel.png" class="front-wheel" alt="">
+        </div>
+
+        <div class="all">
+            <div class="reg">
+                <h1>Registration Number!</h1>
+                <div class="err">
+                    <span class="errorMessage"></span>
+                </div>
+                <div>
+                    <label class="Reg">
+                        <input type="text" value="" name="" class="regTextHolder" placeholder="Type in registration number!">
+                        <button class="regBtn">ADD</button>
+                    </label>
+                </div>
+            </div>
+                <div class="container">
+                    <label for="" class="">
+                        <input type="radio" name="registrationRadio" class="reggRadio" value="cape town">
+                       <span class="reggText">Cape Town</span>
+                    </label>
+                    <label for="" class="">
+                        <input type="radio" name="registrationRadio" class="reggRadio" value="bellivele">
+                        <span class="reggText">Bellville</span>
+                    </label>
+                    <label for="" class="">
+                        <input type="radio" name="registrationRadio" class="reggRadio" value="paarl">
+                        <span class="reggText">Paarl</span>
+                    </label>
+                    <label for="" class="">
+                        <input type="radio" name="registrationRadio" class="reggRadio" value="stellenbosh">
+                        <span class="reggText">Stellenbosh</span>
+                    </label>
+                </div>
+                <div class="container1">
+                    <button class="displayButton">Display</button>
+                    <button class="resetButton">reset</button>
+                </div>
+                <div>
+                    <h3><span class="regPlate">
+                    </span></h3>
+                </div>
+    
+                <div>
+                    <h3><span class="errors">
+                    </span></h3>
+                </div>
+    
+                <div>
+                    <h3>
+                        <a href="">Unit-testing</a>
+                </div>
+            </div>
+    </div>
+    
+</body>
+<script src="./functions/regfunc.js"></script>
+<script src="./functions/reg.js"></script>
+</html>
