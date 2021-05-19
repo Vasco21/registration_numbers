@@ -57,7 +57,7 @@ describe('regex', function(){
 });
 
 describe('Empty String', function(){
-    it('Should return false  you did no insert the correct registration numnber', function(){
+    it('Should return false if the string is empty', function(){
         var registrationFunc = registration()
         assert.equal(false, registrationFunc.emptyStringTest(''));
         assert.equal(false, registrationFunc.emptyStringTest(''));
