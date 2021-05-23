@@ -112,7 +112,7 @@ h1
     font-size: large;
 }
 .reg input{
-    width: 500px;
+    width: 400px;
     border-radius: 6px;
     padding: 20px 30px;
     margin: 15px 0;
@@ -139,7 +139,7 @@ h1
 .reggText{
     font-size: x-large;
 }
-.container1 .displayButton, .resetButton{
+.container1 .displayButton, .resetButton, .displayByTown{
   background-color:cyan;
   border-radius: 7px;
   color: black;
@@ -151,7 +151,7 @@ h1
   margin: 4px 2px;
   cursor: pointer;
 }
-.container1 .displayButton:hover, .resetButton:hover
+.container1 .displayButton:hover, .resetButton:hover, .displayByTown:hover
 {
     background: white;
 }
@@ -169,4 +169,13 @@ a{
 }
 h3{
     padding-top: 8px;
+}
+
+.btn-styled{
+    font-size: 12px;
+    margin: 6px;
+    padding: 0 10px;
+    line-height: 2;
+    border-radius: 6px;
+    background-color: lightgreen;
 }

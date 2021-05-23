@@ -43,7 +43,7 @@ var registration = function(){
     }
 
     var emptyStringTest = function(regChar) {
-        if(regChar == '' || myStore == '')  {
+        if(!regChar || regChar == '')  {
             return false;
         }
         return true;
