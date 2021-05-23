@@ -172,10 +172,10 @@ h3{
 }
 
 .btn-styled{
-    font-size: 12px;
+    font-size: 18px;
     margin: 6px;
     padding: 0 10px;
-    line-height: 2;
-    border-radius: 6px;
-    background-color: lightgreen;
+    line-height: 3;
+    border-radius: 15px;
+    background-color: yellow;
 }
