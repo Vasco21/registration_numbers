@@ -171,6 +171,8 @@ function displayElementsOnForm() {
 }
 
 
+
+
 /**
  * This is a function we use to display elements stord in the local storage by their selected radio button "town"
  */
@@ -206,7 +208,8 @@ function displayElementsOnFormByTown() {
             }
             return;
         } else {
-            errorMsgElement.innerHTML = "Plaese first select the towny you want to filter on";
+            errorMsgElement.innerHTML = "Plaese first select the town you want to filter on";
+            errorMsgElement.style.color = "red";
             errorMessageTimeout();
             return;
         }

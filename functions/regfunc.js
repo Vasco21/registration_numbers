@@ -48,6 +48,9 @@ var registration = function(){
         }
         return true;
     }
+    var resetBtn = function(){
+        return myStore;
+    }
 
     return{
         registrationNo,
@@ -56,7 +59,8 @@ var registration = function(){
         getCounter,
         toUpperCaseReg,
         regexCheck,
-        emptyStringTest
+        emptyStringTest,
+        resetBtn
     }
     
 }

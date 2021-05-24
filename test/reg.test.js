@@ -31,15 +31,6 @@ describe('Uppercasing a lowercased registration number', function(){
     });
 });
 
-// describe('Registration Number', function(){
-//     it('Should return false if you did no insert the inccorrect registration numnber', function(){
-//         var registrationFunc = registration()
-//         assert.equal(false, registrationFunc.registrationNo('ct123456'));
-//         assert.equal(false, registrationFunc.registrationNo('45@wqAZ'));
-//         assert.equal(false, registrationFunc.registrationNo('ACCDEF')); 
-//     });
-// });
-
 describe('regex', function(){
     it('Should return false if the registration number is incorrect', function(){
         var registrationFunc = registration()
@@ -69,7 +60,16 @@ describe('Empty String', function(){
         assert.equal(true, registrationFunc.emptyStringTest("CL 225-897"));
         assert.equal(true, registrationFunc.emptyStringTest("CJ 246-897"));
     });
+
 });
+describe('reset button', function(){
+        it('Should clear all the local storage', function(){
+            var registrationFunc = registration()
+            assert.deepEqual({}, registrationFunc.resetBtn())
+        });
+    });
+
+
 });
 
 
