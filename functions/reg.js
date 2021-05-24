@@ -42,7 +42,7 @@ addregBtn.addEventListener('click', function(){
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
 
     if(plateRegNumsArray) {
-    //Filter incomingName name in existing array on localstorage
+    //Filter registrationsNumber in existing array on localstorage
     //creates an array filled with all array elements that pass a test (provided as a function).    
         let existingobject = plateRegNumsArray.filter(x => x.regNum === registrationsNumber)[ZERO]
         if(existingobject) {
@@ -95,6 +95,9 @@ resetButton.addEventListener('click', function(){
     
 });
 
+/**
+ * 
+ */
 function errorMessageTimeout() {
     setTimeout(function(){
         errorMsgElement.innerHTML = "";
@@ -102,7 +105,10 @@ function errorMessageTimeout() {
     }, 6000)
 }
 
-
+/***
+ * @param key, the name of the obect stored in the local Storage 
+ * this the function we usxse to get the date from the local Storage throughout the scope of the project
+ * ***/
 var getLocalStorageObject  = function(key) {
     let temp = window.localStorage.getItem(key);
     if(temp == null) {
@@ -111,19 +117,34 @@ var getLocalStorageObject  = function(key) {
     return JSON.parse(temp);
 }
 
+/**
+ * 
+ * @param {*} key, the name of the object stored in the local Storage 
+ * @param {*} Object, This is the array we want to store/storing in the local storage
+ */
 var setLocalStorageObject = function(key, Object) {
     window.localStorage.setItem(key, JSON.stringify(Object));
 }
 
-
+/**
+ * 
+ * @param {*} key , This is a function we use to remove objects stored in the local storage
+ */
 var clearLocalStorage = function(key) {
     window.localStorage.removeItem(key)
 }
 
+/**
+ * 
+ * @param {*} ele , This is a function use we use to clear the textbox we use to enter the registration numbers
+ */
 function clearField(ele) {
     ele.value = '';
 }
 
+/**
+ * This is a function we use to to display the elements stored in the local storage
+ */
 function displayElementsOnForm() {
     removeDynamicallyAddedElements()
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
@@ -150,12 +171,18 @@ function displayElementsOnForm() {
 }
 
 
-
+/**
+ * This is a function we use to display elements stord in the local storage by their selected radio button "town"
+ */
 function displayElementsOnFormByTown() {
+    //Tjis removes the elements already showing on the form
     removeDynamicallyAddedElements()
+    //Tis retrieves the elements in the local storage
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
     if(plateRegNumsArray) {
+        //This calls the parent display element in the form
         var parentDivElement = document.getElementById('regNumDisplay');
+        //This gets the value of the seleted radio button value
         var checkedRegistrationElem = document.querySelector("input[name='registrationRadio']:checked")
         if(checkedRegistrationElem) {
             var plateRegNumsArrayByTown = [];
@@ -164,6 +191,7 @@ function displayElementsOnFormByTown() {
                     plateRegNumsArrayByTown.push(plateRegNumsArray[i])
                 }
             }
+            //This iterats through all the filtered elements in the local storage
             for(var i =0; i< plateRegNumsArrayByTown.length; i++) {
                 var button = document.createElement('button');
                 var divIdName = 'regNumDisplay' + i;
@@ -188,7 +216,9 @@ function displayElementsOnFormByTown() {
     errorMessageTimeout();
     return;
 }
-
+/**
+ * This removes all the diplayed elements on the form
+ */
 function removeDynamicallyAddedElements() {
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
     var divId = document.getElementById('regNumDisplay');
