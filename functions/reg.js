@@ -15,13 +15,13 @@ var plateRegNumsKey = 'PlateRegNums';
 
 var plateRegNumsArray = [];
 
-var  ZERO = 0;
+var ZERO = 0;
 
-addregBtn.addEventListener('click', function(){
-   
+addregBtn.addEventListener('click', function() {
+
     var registrationsNumber = RegTextHolderElement.value;
 
-    if(!registrationFunc.emptyStringTest(registrationsNumber)){
+    if (!registrationFunc.emptyStringTest(registrationsNumber)) {
         errorMsgElement.innerHTML = "Please enter a number plate, required";
         errorMsgElement.style.color = "red";
         errorMessageTimeout();
@@ -29,38 +29,46 @@ addregBtn.addEventListener('click', function(){
     }
 
     registrationsNumber = registrationFunc.toUpperCaseReg(registrationsNumber);
-    
-    if(!registrationFunc.regexCheck(registrationsNumber)){
-        errorMsgElement.innerHTML = "Please insert the number plate in a correct format e.g. CA 123456 CL 123-123";
+
+    if (!registrationFunc.regexCheck(registrationsNumber)) {
+        errorMsgElement.innerHTML = "Please insert the number plate in a correct format e.g. CA 123456 CL 123-123 CJ 123 456";
         errorMsgElement.style.color = "red";
         errorMessageTimeout();
         clearField(RegTextHolderElement);
         return false;
     }
+    
 
     //Get existing array of objects in localStorage
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
-
-    if(plateRegNumsArray) {
-    //Filter registrationsNumber in existing array on localstorage
-    //creates an array filled with all array elements that pass a test (provided as a function).    
+   
+    
+    if (plateRegNumsArray) {
+        //Filter registrationsNumber in existing array on localstorage
+        //creates an array filled with all array elements that pass a test (provided as a function).    
         let existingobject = plateRegNumsArray.filter(x => x.regNum === registrationsNumber)[ZERO]
-        if(existingobject) {
+        if (existingobject) {
             errorMsgElement.innerHTML = "Entered number plate already exists, please enter a different number plate";
             errorMsgElement.style.color = "red";
             errorMessageTimeout();
             clearField(RegTextHolderElement);
             return false;
+            
         } else {
-            plateRegNumsArray.push({regNum : registrationsNumber});
+            plateRegNumsArray.push({
+                regNum: registrationsNumber
+            });
         }
     } else {
         plateRegNumsArray = [];
-        plateRegNumsArray.push({regNum : registrationsNumber});
+        plateRegNumsArray.push({
+            regNum: registrationsNumber
+        });
         setLocalStorageObject(plateRegNumsKey, plateRegNumsArray);
         errorMsgElement.innerHTML = "Registration number successfuly added!";
         errorMsgElement.style.color = "green";
         clearField(RegTextHolderElement);
+        displayElementsOnForm();
         plateRegNumsArray = [];
         return true;
     }
@@ -70,36 +78,38 @@ addregBtn.addEventListener('click', function(){
     errorMsgElement.style.color = "green";
     errorMessageTimeout();
     clearField(RegTextHolderElement);
+    displayElementsOnForm();
     plateRegNumsArray = [];
     return true;
     
 });
 
-displayByTownButton.addEventListener('click', function(){
+displayByTownButton.addEventListener('click', function() {
     displayElementsOnFormByTown()
 });
 
-displayButton.addEventListener('click', function(){
+displayButton.addEventListener('click', function() {
     displayElementsOnForm();
     return true;
 });
 
 
-resetButton.addEventListener('click', function(){
+resetButton.addEventListener('click', function() {
     removeDynamicallyAddedElements();
     clearLocalStorage(plateRegNumsKey);
     errorMsgElement.innerHTML = "Local Storage cleared!";
+    errorMsgElement.style.color = "green";
     clearField(RegTextHolderElement)
     errorMessageTimeout();
     return true;
-    
+
 });
 
 /**
  * 
  */
 function errorMessageTimeout() {
-    setTimeout(function(){
+    setTimeout(function() {
         errorMsgElement.innerHTML = "";
 
     }, 6000)
@@ -109,9 +119,9 @@ function errorMessageTimeout() {
  * @param key, the name of the obect stored in the local Storage 
  * this the function we usxse to get the date from the local Storage throughout the scope of the project
  * ***/
-var getLocalStorageObject  = function(key) {
+var getLocalStorageObject = function(key) {
     let temp = window.localStorage.getItem(key);
-    if(temp == null) {
+    if (temp == null) {
         return null;
     }
     return JSON.parse(temp);
@@ -146,11 +156,11 @@ function clearField(ele) {
  * This is a function we use to to display the elements stored in the local storage
  */
 function displayElementsOnForm() {
-    removeDynamicallyAddedElements()
+    removeDynamicallyAddedElements();
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
-    if(plateRegNumsArray) {
+    if (plateRegNumsArray) {
         var parentDivElement = document.getElementById('regNumDisplay');
-        for(var i =0; i< plateRegNumsArray.length; i++) {
+        for (var i = 0; i < plateRegNumsArray.length; i++) {
             var button = document.createElement('button');
             var divIdName = 'regNumDisplay' + i;
             button.setAttribute('id', divIdName);
@@ -181,32 +191,40 @@ function displayElementsOnFormByTown() {
     removeDynamicallyAddedElements()
     //Tis retrieves the elements in the local storage
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
-    if(plateRegNumsArray) {
+    console.log(plateRegNumsArray.length)
+    if (plateRegNumsArray) {
         //This calls the parent display element in the form
         var parentDivElement = document.getElementById('regNumDisplay');
         //This gets the value of the seleted radio button value
         var checkedRegistrationElem = document.querySelector("input[name='registrationRadio']:checked")
-        if(checkedRegistrationElem) {
+        if (checkedRegistrationElem) {
             var plateRegNumsArrayByTown = [];
-            for(var i =0; i< plateRegNumsArray.length; i++) {
-                if(plateRegNumsArray[i].regNum.substr(0,2) === checkedRegistrationElem.value) {
+            for (var i = 0; i < plateRegNumsArray.length; i++) {
+                if (plateRegNumsArray[i].regNum.substr(0, 2) === checkedRegistrationElem.value) {
                     plateRegNumsArrayByTown.push(plateRegNumsArray[i])
                 }
             }
             //This iterats through all the filtered elements in the local storage
-            for(var i =0; i< plateRegNumsArrayByTown.length; i++) {
-                var button = document.createElement('button');
-                var divIdName = 'regNumDisplay' + i;
-                button.setAttribute('id', divIdName);
-                button.type = 'button';
-                button.innerHTML = plateRegNumsArrayByTown[i].regNum;
-                button.className = 'btn-styled';
-                parentDivElement.appendChild(button)
-                var span = document.createElement("span");
-                span.innerHTML = "  ";
-                parentDivElement.appendChild(span)
+            if (plateRegNumsArrayByTown.length !== 0) {
+                for (var i = 0; i < plateRegNumsArrayByTown.length; i++) {
+                    var button = document.createElement('button');
+                    var divIdName = 'regNumDisplay' + i;
+                    button.setAttribute('id', divIdName);
+                    button.type = 'button';
+                    button.innerHTML = plateRegNumsArrayByTown[i].regNum;
+                    button.className = 'btn-styled';
+                    parentDivElement.appendChild(button)
+                    var span = document.createElement("span");
+                    span.innerHTML = "  ";
+                    parentDivElement.appendChild(span)
+                }
+                return;
+            } else {
+                errorMsgElement.innerHTML = "no registration has been added!";
+                errorMsgElement.style.color = "orange";
+                errorMessageTimeout();
+                return;
             }
-            return;
         } else {
             errorMsgElement.innerHTML = "Plaese first select the town you want to filter on";
             errorMsgElement.style.color = "red";
@@ -214,10 +232,7 @@ function displayElementsOnFormByTown() {
             return;
         }
     }
-    errorMsgElement.innerHTML = "No list to dispaly!";
-    errorMsgElement.style.color = "orange";
-    errorMessageTimeout();
-    return;
+
 }
 /**
  * This removes all the diplayed elements on the form
@@ -225,12 +240,16 @@ function displayElementsOnFormByTown() {
 function removeDynamicallyAddedElements() {
     plateRegNumsArray = getLocalStorageObject(plateRegNumsKey);
     var divId = document.getElementById('regNumDisplay');
-    if(plateRegNumsArray) {
-        for(var i =0; i< plateRegNumsArray.length; i++) {
+    if (plateRegNumsArray) {
+        for (var i = 0; i < plateRegNumsArray.length; i++) {
             var childId = document.getElementById('regNumDisplay' + i);
-            if(childId) {
+            if (childId) {
                 divId.removeChild(childId)
             }
         }
     }
+}
+
+window.onload = function(){
+    displayElementsOnForm();   
 }

@@ -1,11 +1,11 @@
-var registration = function(){
-    var myStore =  {};
+var registration = function() {
+    var myStore = {};
     var counter = 0;
     var error = '';
-    
-    
-    
-    var registrationNo = function (reg){
+
+
+
+    var registrationNo = function(reg) {
         var regChar = reg;
 
         emptyStringTest(regChar);
@@ -13,27 +13,27 @@ var registration = function(){
         regexCheck(regChar)
 
         regChar = toUpperCaseReg(regChar)
-    
-        if(myStore[regChar] === undefined){
+
+        if (myStore[regChar] === undefined) {
             myStore[regChar] = 0;
             counter++
-        } else{
+        } else {
             myStore[regChar]++;
         }
         return regChar;
     }
 
-    var toUpperCaseReg =  function(regChar) {
+    var toUpperCaseReg = function(regChar) {
         return regChar.toUpperCase();
     }
 
-    var setMyStore = function(regName){
+    var setMyStore = function(regName) {
         myStore = regName;
     }
-    var  getMyStore = function(){
+    var getMyStore = function() {
         return myStore;
     }
-    var getCounter = function(){
+    var getCounter = function() {
         return counter;
     }
 
@@ -43,16 +43,16 @@ var registration = function(){
     }
 
     var emptyStringTest = function(regChar) {
-        if(!regChar || regChar == '')  {
+        if (!regChar || regChar == '') {
             return false;
         }
         return true;
     }
-    var resetBtn = function(){
+    var resetBtn = function() {
         return myStore;
     }
 
-    return{
+    return {
         registrationNo,
         setMyStore,
         getMyStore,
@@ -62,5 +62,5 @@ var registration = function(){
         emptyStringTest,
         resetBtn
     }
-    
+
 }

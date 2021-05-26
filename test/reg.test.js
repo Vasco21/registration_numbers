@@ -1,15 +1,4 @@
 describe('Registration Number', function(){
-//     it('Should return false if you did no insert the inccorrect registration numnber', function(){
-//         var registrationFunc = registration()
-//         assert.equal(false, registrationFunc.registrationNo('ct123456'));
-//         assert.equal(false, registrationFunc.registrationNo('45@wqAZ'));
-//         assert.equal(false, registrationFunc.registrationNo('ACCDEF')); 
-//         assert.equal('', registrationFunc.registrationNo('CA123456'));
-//         assert.equal('', registrationFunc.registrationNo('CL123 444'));
-//         assert.equal('', registrationFunc.registrationNo('CY123 444'));
-//     });
-// });
-
 describe('Incrementing counter for registration number', function(){
     var registrationFunc = registration()
     it('should add new registration number', function(){      
@@ -62,6 +51,7 @@ describe('Empty String', function(){
     });
 
 });
+
 describe('reset button', function(){
         it('Should clear all the local storage', function(){
             var registrationFunc = registration()
